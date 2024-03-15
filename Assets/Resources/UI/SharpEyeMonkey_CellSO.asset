@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3934034ca108e1a4686f9b956731a07d, type: 3}
-  m_Name: Monkey_2_CellSO
+  m_Name: SharpEyeMonkey_CellSO
   m_EditorClassIdentifier: 
-  Type: 1
-  Name: Ninja Monkey
-  Sprite: {fileID: 21300000, guid: 1a9952c96f7655747abc4508c704d89d, type: 3}
-  Cost: 150
+  Type: 0
+  Name: Sharp Monkey
+  Sprite: {fileID: 21300000, guid: 682dc48054517a84dafdc7efd4a16f60, type: 3}
+  Cost: 50

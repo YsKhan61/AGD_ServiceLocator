@@ -61,7 +61,7 @@ namespace ServiceLocator.Player.Projectile
         {
             target = null;
             projectileView.gameObject.SetActive(false);
-            PlayerService.Instance.ReturnProjectileToPool(this);
+            GameService.Instance.PlayerService.ReturnProjectileToPool(this);
         }
 
         private void SetState(ProjectileState newState) => currentState = newState;

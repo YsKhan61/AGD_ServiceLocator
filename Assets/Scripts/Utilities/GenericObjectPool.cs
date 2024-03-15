@@ -51,9 +51,9 @@ namespace ServiceLocator.Utilities
             pooledItem.isUsed = false;
         }
 
-        public class PooledItem<T>
+        public class PooledItem<U>
         {
-            public T Item;
+            public U Item;
             public bool isUsed;
         }
     }

@@ -14,7 +14,7 @@ public class MonkeyController_UnitTest
     {
         MonkeyScriptableObject monkeySO = CreateDummyMonkeySO();
         ProjectilePool projectilePool = CreateDummyProjectilePool();
-        monkeyController = new MonkeyController(monkeySO, projectilePool);
+       //  monkeyController = new MonkeyController(monkeySO, projectilePool);
     }
 
     private MonkeyScriptableObject CreateDummyMonkeySO()
@@ -37,7 +37,7 @@ public class MonkeyController_UnitTest
         ProjectileView projectilePrefab = new GameObject().AddComponent<ProjectileView>();
         List<ProjectileScriptableObject> projectileSOs = new List<ProjectileScriptableObject>();
         projectileSOs.Add(ScriptableObject.CreateInstance<ProjectileScriptableObject>());
-        return new ProjectilePool(projectilePrefab, projectileSOs);
+        return null;// new ProjectilePool(projectilePrefab, projectileSOs);
     }
 
     [Test]

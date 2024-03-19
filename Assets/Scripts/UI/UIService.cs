@@ -40,6 +40,12 @@ namespace ServiceLocator.UI
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button quitButton;
 
+        /// <summary>
+        /// Index of the map button whose map was won last time.
+        /// This will remain unchanged on scene reload, only it will reset when entire game restarts.
+        /// </summary>
+        private static int s_LastWonMapButtonIndex = 0;
+
         private void Start()
         {
             gameplayPanel.SetActive(false);
@@ -63,9 +69,14 @@ namespace ServiceLocator.UI
         private void InitializeMapSelectionUI(EventService eventService)
         {
             levelSelectionPanel.SetActive(true);
-            foreach (MapButton mapButton in mapButtons)
+            for (int i = 0, count = mapButtons.Count; i < count; i++)
             {
-                mapButton.Init(eventService);
+                mapButtons[i].Init(eventService);
+                
+                if (i <= s_LastWonMapButtonIndex)
+                    mapButtons[i].SetInteractable(true);
+                else
+                    mapButtons[i].SetInteractable(false);
             }
         }
 
@@ -112,10 +123,12 @@ namespace ServiceLocator.UI
             gameEndPanel.SetActive(true);
 
             if (hasWon)
+            {
                 gameEndText.SetText("You Won");
+                s_LastWonMapButtonIndex++;
+            }
             else
                 gameEndText.SetText("Game Over");
         }
-
     }
 }

@@ -10,39 +10,39 @@ namespace ServiceLocator.Map
     public class MapService
     {
         // Dependencies:
-        private EventService eventService;
-        private MapScriptableObject mapScriptableObject;
+        private EventService m_EventService;
+        private MapScriptableObject m_MapScriptableObject;
 
-        private Grid currentGrid;
-        private Tilemap currentTileMap;
-        private MapData currentMapData;
-        private SpriteRenderer tileOverlay;
+        private Grid m_CurrentGrid;
+        private Tilemap m_CurrentTileMap;
+        private MapData m_CurrentMapData;
+        private SpriteRenderer m_TileOverlay;
 
         public MapService(MapScriptableObject mapScriptableObject)
         {
-            this.mapScriptableObject = mapScriptableObject;
-            tileOverlay = Object.Instantiate(mapScriptableObject.TileOverlay).GetComponent<SpriteRenderer>();
+            this.m_MapScriptableObject = mapScriptableObject;
+            m_TileOverlay = Object.Instantiate(mapScriptableObject.TileOverlay).GetComponent<SpriteRenderer>();
             ResetTileOverlay();
         }
 
         public void Init(EventService eventService)
         {
-            this.eventService = eventService;
+            this.m_EventService = eventService;
             SubscribeToEvents();
         }
 
-        private void SubscribeToEvents() => eventService.OnMapSelected.AddListener(LoadMap);
+        private void SubscribeToEvents() => m_EventService.OnMapSelected.AddListener(LoadMap);
 
         private void LoadMap(int mapId)
         {
-            currentMapData = mapScriptableObject.MapDatas.Find(mapData => mapData.MapID == mapId);
-            currentGrid = Object.Instantiate(currentMapData.MapPrefab);
-            currentTileMap = currentGrid.GetComponentInChildren<Tilemap>();
+            m_CurrentMapData = m_MapScriptableObject.MapDatas.Find(mapData => mapData.MapID == mapId);
+            m_CurrentGrid = Object.Instantiate(m_CurrentMapData.MapPrefab);
+            m_CurrentTileMap = m_CurrentGrid.GetComponentInChildren<Tilemap>();
         }
 
-        public List<Vector3> GetWayPointsForCurrentMap() => currentMapData.WayPoints;
+        public List<Vector3> GetWayPointsForCurrentMap() => m_CurrentMapData.WayPoints;
 
-        public Vector3 GetBloonSpawnPositionForCurrentMap() => currentMapData.SpawningPoint;
+        public Vector3 GetBloonSpawnPositionForCurrentMap() => m_CurrentMapData.SpawningPoint;
 
         private void ResetTileOverlay() => SetTileOverlayColor(TileOverlayColor.TRANSPARENT);
 
@@ -51,13 +51,13 @@ namespace ServiceLocator.Map
             switch(colorToSet)
             {
                 case TileOverlayColor.TRANSPARENT:
-                    tileOverlay.color = mapScriptableObject.DefaultTileColor;
+                    m_TileOverlay.color = m_MapScriptableObject.DefaultTileColor;
                     break;
                 case TileOverlayColor.SPAWNABLE:
-                    tileOverlay.color = mapScriptableObject.SpawnableTileColor;
+                    m_TileOverlay.color = m_MapScriptableObject.SpawnableTileColor;
                     break;
                 case TileOverlayColor.NON_SPAWNABLE:
-                    tileOverlay.color = mapScriptableObject.NonSpawnableTileColor;
+                    m_TileOverlay.color = m_MapScriptableObject.NonSpawnableTileColor;
                     break;
             }
         }
@@ -70,12 +70,12 @@ namespace ServiceLocator.Map
 
             if(CanSpawnOnPosition(cellCenter, cellPosition))
             {
-                tileOverlay.transform.position = cellCenter;
+                m_TileOverlay.transform.position = cellCenter;
                 SetTileOverlayColor(TileOverlayColor.SPAWNABLE);
             }
             else
             {
-                tileOverlay.transform.position = cellCenter;
+                m_TileOverlay.transform.position = cellCenter;
                 SetTileOverlayColor(TileOverlayColor.NON_SPAWNABLE);
             }
         }
@@ -100,9 +100,9 @@ namespace ServiceLocator.Map
             }
         }
 
-        private Vector3Int GetCellPosition(Vector3 mousePosition) => currentGrid.WorldToCell(new Vector3(mousePosition.x, mousePosition.y, 0));
+        private Vector3Int GetCellPosition(Vector3 mousePosition) => m_CurrentGrid.WorldToCell(new Vector3(mousePosition.x, mousePosition.y, 0));
 
-        private Vector3 GetCenterOfCell(Vector3Int cellPosition) => currentGrid.GetCellCenterWorld(cellPosition);
+        private Vector3 GetCenterOfCell(Vector3Int cellPosition) => m_CurrentGrid.GetCellCenterWorld(cellPosition);
 
         private bool CanSpawnOnPosition(Vector3 centerCell, Vector3Int cellPosition)
         {
@@ -112,7 +112,7 @@ namespace ServiceLocator.Map
 
         private bool InisdeTilemapBounds(Vector3Int mouseToCell)
         {
-            BoundsInt tilemapBounds = currentTileMap.cellBounds;
+            BoundsInt tilemapBounds = m_CurrentTileMap.cellBounds;
             return tilemapBounds.Contains(mouseToCell);
         }
 

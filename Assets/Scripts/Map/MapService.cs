@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 using ServiceLocator.Main;
 using ServiceLocator.Player;
 using ServiceLocator.Events;
+using ServiceLocator.Wave.Bloon;
 
 namespace ServiceLocator.Map
 {

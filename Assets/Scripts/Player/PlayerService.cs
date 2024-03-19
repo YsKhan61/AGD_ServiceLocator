@@ -4,6 +4,7 @@ using ServiceLocator.Player.Projectile;
 using ServiceLocator.Map;
 using ServiceLocator.UI;
 using ServiceLocator.Sound;
+using ServiceLocator.Wave.Bloon;
 
 namespace ServiceLocator.Player
 {
@@ -132,7 +133,7 @@ namespace ServiceLocator.Player
                 PlayerDeath();
         }
 
-        private void DeductMoney(int moneyToDedecut)
+        public void DeductMoney(int moneyToDedecut)
         {
             Money -= moneyToDedecut;
             uiService.UpdateMoneyUI(Money);

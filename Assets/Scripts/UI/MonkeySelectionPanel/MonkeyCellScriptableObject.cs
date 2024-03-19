@@ -9,6 +9,7 @@ namespace ServiceLocator.UI
         public MonkeyType Type;
         public string Name;
         public Sprite Sprite;
-        public int Cost;
+        public int CostToUnlock;
+        public int CostToPlace;
     }
 }

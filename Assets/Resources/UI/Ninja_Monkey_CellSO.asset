@@ -15,4 +15,5 @@ MonoBehaviour:
   Type: 1
   Name: Ninja Monkey
   Sprite: {fileID: 21300000, guid: 1a9952c96f7655747abc4508c704d89d, type: 3}
-  Cost: 150
+  CostToUnlock: 0
+  CostToPlace: 50

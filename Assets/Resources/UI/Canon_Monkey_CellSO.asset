@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2443920336f605248b20c275c2daa475, type: 3}
-  m_Name: Projectile_2_SO
+  m_Script: {fileID: 11500000, guid: 3934034ca108e1a4686f9b956731a07d, type: 3}
+  m_Name: Canon_Monkey_CellSO
   m_EditorClassIdentifier: 
-  Type: 1
-  Sprite: {fileID: 21300000, guid: 85de3f5b571be32409cb8455654037a9, type: 3}
-  Speed: 10
-  Damage: 2
+  Type: 3
+  Name: Canon Monkey
+  Sprite: {fileID: 21300000, guid: 7231a2bdefea0c44d9406a84d33913a3, type: 3}
+  CostToUnlock: 200
+  CostToPlace: 100

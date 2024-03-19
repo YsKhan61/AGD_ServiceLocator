@@ -6,68 +6,122 @@ namespace ServiceLocator.Player.Projectile
 {
     public class ProjectileController
     {
-        private PlayerService playerService;
-        private ProjectileView projectileView;
-        private ProjectileScriptableObject projectileScriptableObject;
+        private PlayerService m_PlayerService;
+        private ProjectileView m_ProjectileView;
+        private ProjectileScriptableObject m_ProjectileScriptableObject;
 
-        private BloonController target;
-        private ProjectileState currentState;
+        private BloonController m_Target;
+        private ProjectileState m_CurrentState;
 
         public ProjectileController(PlayerService playerService, ProjectileView projectilePrefab, Transform projectileContainer)
         {
-            this.playerService = playerService;
-            projectileView = Object.Instantiate(projectilePrefab, projectileContainer);
-            projectileView.SetController(this);
+            this.m_PlayerService = playerService;
+            m_ProjectileView = Object.Instantiate(projectilePrefab, projectileContainer);
+            m_ProjectileView.SetController(this);
         }
 
         public void Init(ProjectileScriptableObject projectileScriptableObject)
         {
-            this.projectileScriptableObject = projectileScriptableObject;
-            projectileView.SetSprite(projectileScriptableObject.Sprite);
-            projectileView.gameObject.SetActive(true);
-            target = null;
+            this.m_ProjectileScriptableObject = projectileScriptableObject;
+            m_ProjectileView.SetSprite(projectileScriptableObject.Sprite);
+            m_ProjectileView.gameObject.SetActive(true);
+            m_Target = null;
         }
 
-        public void SetPosition(Vector3 spawnPosition) => projectileView.transform.position = spawnPosition;
+        public void SetPosition(Vector3 spawnPosition) => m_ProjectileView.transform.position = spawnPosition;
 
         public void SetTarget(BloonController target)
         {
-            this.target = target;
+            this.m_Target = target;
             SetState(ProjectileState.ACTIVE);
             RotateTowardsTarget();
         }
 
         private void RotateTowardsTarget()
         {
-            Vector3 direction = target.Position - projectileView.transform.position;
+            Vector3 direction = m_Target.Position - m_ProjectileView.transform.position;
             float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg) + 180;
-            projectileView.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            m_ProjectileView.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
         public void UpdateProjectileMotion()
         {
-            if(target != null && currentState == ProjectileState.ACTIVE)
-                projectileView.transform.Translate(Vector2.left * projectileScriptableObject.Speed * Time.deltaTime, Space.Self);
+            if(m_Target != null && m_CurrentState == ProjectileState.ACTIVE)
+                m_ProjectileView.transform.Translate(Vector2.left * m_ProjectileScriptableObject.Speed * Time.deltaTime, Space.Self);
         }
 
         public void OnHitBloon(BloonController bloonHit)
         {
-            if(currentState == ProjectileState.ACTIVE)
+            if (m_CurrentState != ProjectileState.ACTIVE)
+                return;
+
+            switch (m_ProjectileScriptableObject.Type)
             {
-                bloonHit.TakeDamage(projectileScriptableObject.Damage);
-                ResetProjectile();
-                SetState(ProjectileState.HIT_TARGET);
+                case ProjectileType.Dart:
+                case ProjectileType.Shuriken:
+                case ProjectileType.Bullet:
+                    TryPointDamage(bloonHit);
+                    break;
+
+                case ProjectileType.Canon:
+                case ProjectileType.EnergyBall:
+                    TryAreaDamage();
+                    break;
+
+                default:
+                    break;
             }
+            ResetProjectile();
+            SetState(ProjectileState.HIT_TARGET);
         }
 
         public void ResetProjectile()
         {
-            target = null;
-            projectileView.gameObject.SetActive(false);
-            playerService.ReturnProjectileToPool(this);
+            m_Target = null;
+            m_ProjectileView.gameObject.SetActive(false);
+            m_PlayerService.ReturnProjectileToPool(this);
         }
 
-        private void SetState(ProjectileState newState) => currentState = newState;
+        private void TryPointDamage(BloonController bloonHit)
+        {
+            bloonHit.TakeDamage(m_ProjectileScriptableObject.Damage);
+        }
+
+        private void TryAreaDamage()
+        {
+            if (!TryGetNearbyBloons(out BloonController[] bloons))
+                return;
+
+            foreach (BloonController bloon in bloons)
+            {
+                bloon.TakeDamage(m_ProjectileScriptableObject.Damage);
+            }
+        }
+
+        private bool TryGetNearbyBloons(out BloonController[] bloons)
+        {
+            Collider2D[] results = new Collider2D[10];
+            int hitCount = Physics2D.OverlapCircleNonAlloc(
+                m_ProjectileView.transform.position,
+                m_ProjectileScriptableObject.AreaDamageRadius,
+                results, 
+                1 << m_Target.LayerMask);
+
+            if (hitCount <= 0)
+            {
+                bloons = null;
+                return false;
+            }
+
+            bloons = new BloonController[hitCount];
+            for (int i = 0; i < hitCount; i++)
+            {
+                bloons[i] = results[i].gameObject.GetComponent<BloonView>().Controller;
+            }
+            return true;
+        }
+
+        private void SetState(ProjectileState newState) => m_CurrentState = newState;
     }
 
     public enum ProjectileState

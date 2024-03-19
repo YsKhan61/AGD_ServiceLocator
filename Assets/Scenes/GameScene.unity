@@ -1468,6 +1468,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -350
       objectReference: {fileID: 0}
+    - target: {fileID: 7182248003610753085, guid: 15430d56842a28843b57fd250730f142, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: mapButtons.Array.size
       value: 4
@@ -1484,6 +1488,14 @@ PrefabInstance:
       propertyPath: mapButtons.Array.data[3]
       value: 
       objectReference: {fileID: 375272130}
+    - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
+      propertyPath: monkeyCellScriptableObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
+      propertyPath: monkeyCellScriptableObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 65f9dc36cab669e4384b291073dcbe0d, type: 2}
     - target: {fileID: 7182248005041137931, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: m_Name
       value: Canvas - UI Service
@@ -1574,7 +1586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7182248005337839508, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -22,6 +22,7 @@ namespace ServiceLocator.Wave.Bloon
         private BloonState currentState;
 
         public Vector3 Position => bloonView.transform.position;
+        public LayerMask LayerMask => bloonView.gameObject.layer;
 
         public BloonController(PlayerService playerService, WaveService waveService, SoundService soundService, BloonView bloonPrefab, Transform bloonContainer)
         {

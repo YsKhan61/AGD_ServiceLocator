@@ -31,16 +31,29 @@ namespace ServiceLocator.UI
             originalAnchoredPosition = rectTransform.anchoredPosition;
         }
 
-        public void OnPointerDown(PointerEventData eventData) => monkeyImage.color = new Color(1, 1, 1, 0.6f);
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (owner.IsLocked)
+            {
+                owner.TryUnlock();
+                return;
+            }
+
+            monkeyImage.color = new Color(1, 1, 1, 0.6f);
+        }
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (owner.IsLocked) return;
+
             rectTransform.anchoredPosition += eventData.delta;
             owner.MonkeyDraggedAt(eventData.position);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (owner.IsLocked) return;
+
             ResetMonkeyImage();
             owner.MonkeyDroppedAt(eventData.position);
         }

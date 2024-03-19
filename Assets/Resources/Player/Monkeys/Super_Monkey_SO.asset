@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9f78841389ef74295702b371ae6a27, type: 3}
+  m_Name: Super_Monkey_SO
+  m_EditorClassIdentifier: 
+  Type: 4
+  Prefab: {fileID: 4096465855865953158, guid: 6674c174873bc1d4d9b469b623de75ff, type: 3}
+  RotationSpeed: 100
+  projectileType: 3
+  Range: 20
+  Cost: 10
+  AttackableBloons: 0000000001000000020000000300000004000000
+  AttackRate: 1

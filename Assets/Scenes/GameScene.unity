@@ -1490,12 +1490,16 @@ PrefabInstance:
       objectReference: {fileID: 375272130}
     - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: monkeyCellScriptableObjects.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: monkeyCellScriptableObjects.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 65f9dc36cab669e4384b291073dcbe0d, type: 2}
+    - target: {fileID: 7182248005041137930, guid: 15430d56842a28843b57fd250730f142, type: 3}
+      propertyPath: monkeyCellScriptableObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a3df3c56d12b0134c9ca0f4b6152bedd, type: 2}
     - target: {fileID: 7182248005041137931, guid: 15430d56842a28843b57fd250730f142, type: 3}
       propertyPath: m_Name
       value: Canvas - UI Service

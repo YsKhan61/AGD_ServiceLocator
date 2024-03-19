@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3934034ca108e1a4686f9b956731a07d, type: 3}
-  m_Name: Super_Monkey_CellSO
+  m_Script: {fileID: 11500000, guid: 2443920336f605248b20c275c2daa475, type: 3}
+  m_Name: Energyball_SO
   m_EditorClassIdentifier: 
   Type: 4
-  Name: Super Monkey
-  Sprite: {fileID: 21300000, guid: 1c9f2e8e5d4e99740aec9fbd15dfb2fe, type: 3}
-  CostToUnlock: 500
-  CostToPlace: 200
+  Sprite: {fileID: 21300000, guid: d426ee07f22f2d247ae29cf9f6afd7ff, type: 3}
+  Speed: 10
+  Damage: 20
+  AreaDamageRadius: 0

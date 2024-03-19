@@ -61,18 +61,31 @@ namespace ServiceLocator.Player.Projectile
                 case ProjectileType.Shuriken:
                 case ProjectileType.Bullet:
                     TryPointDamage(bloonHit);
+                    ResetProjectile();
+                    SetState(ProjectileState.HIT_TARGET);
                     break;
 
                 case ProjectileType.Canon:
-                case ProjectileType.EnergyBall:
                     TryAreaDamage();
+                    ResetProjectile();
+                    SetState(ProjectileState.HIT_TARGET);
+                    break;
+
+                case ProjectileType.EnergyBall:
+                    TryPointDamage(bloonHit);
+                    if (bloonHit.GetBloonType() == BloonType.Blue ||
+                        bloonHit.GetBloonType() == BloonType.Red)
+                    {
+                        return;
+                    }
+                    ResetProjectile();
+                    SetState(ProjectileState.HIT_TARGET);
                     break;
 
                 default:
                     break;
             }
-            ResetProjectile();
-            SetState(ProjectileState.HIT_TARGET);
+            
         }
 
         public void ResetProjectile()

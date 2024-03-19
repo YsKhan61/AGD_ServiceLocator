@@ -17,6 +17,6 @@ MonoBehaviour:
   RotationSpeed: 75
   projectileType: 1
   Range: 10
-  Cost: 150
+  Cost: 50
   AttackableBloons: 00000000010000000200000004000000
   AttackRate: 0.5

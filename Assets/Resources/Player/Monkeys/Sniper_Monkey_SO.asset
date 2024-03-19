@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9f78841389ef74295702b371ae6a27, type: 3}
+  m_Name: Sniper_Monkey_SO
+  m_EditorClassIdentifier: 
+  Type: 2
+  Prefab: {fileID: 4096465855865953158, guid: 8fa90eccd09912242a2914c4b986a9f8, type: 3}
+  RotationSpeed: 50
+  projectileType: 2
+  Range: 3
+  Cost: 300
+  AttackableBloons: 0000000001000000020000000300000004000000
+  AttackRate: 0.25

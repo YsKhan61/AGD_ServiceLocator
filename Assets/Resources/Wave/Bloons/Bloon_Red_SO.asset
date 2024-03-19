@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9a098c6351a2044bdfbd349df80a47, type: 3}
-  m_Name: WaveConfiguration_1
+  m_Script: {fileID: 11500000, guid: b32fea2b81d77ab45b7095799571b00f, type: 3}
+  m_Name: Bloon_Red_SO
   m_EditorClassIdentifier: 
-  MapID: 1
-  WaveDatas:
-  - WaveID: 1
-    ListOfBloons: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  Type: 0
+  Health: 1
+  Damage: 1
+  Reward: 10
+  Speed: 3
+  Sprite: {fileID: 21300000, guid: ae1e98a057db6a94ca5429339a0216d8, type: 3}
+  LayeredBloons: 
+  LayerBloonSpawnRate: 0.2

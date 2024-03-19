@@ -15,8 +15,13 @@ MonoBehaviour:
   SpawnRate: 0.25
   WaveConfigurations:
   - {fileID: 11400000, guid: 6122e53498d7ca745993e2b4cacf85da, type: 2}
+  - {fileID: 11400000, guid: e864dbf2af38a9f479a95423e1e2c680, type: 2}
+  - {fileID: 11400000, guid: 82a3d447573dacb449c1676893a18add, type: 2}
+  - {fileID: 11400000, guid: 5919e43c117313c49aaabfa5b658bf93, type: 2}
   BloonPrefab: {fileID: 5809090260471785846, guid: 36b92d4f037c49f42bb4578971e272e1, type: 3}
   BloonScriptableObjects:
   - {fileID: 11400000, guid: 45005e1015669c241a23ada66cdd35d7, type: 2}
   - {fileID: 11400000, guid: ea94ed707f901674ab17fa92fb1e75fc, type: 2}
   - {fileID: 11400000, guid: 62dbe99bc77263640a7119cdf12fc398, type: 2}
+  - {fileID: 11400000, guid: 92eab2e914352454a9a6db55d1294070, type: 2}
+  - {fileID: 11400000, guid: a59756c30017f6340b217ace060b5415, type: 2}

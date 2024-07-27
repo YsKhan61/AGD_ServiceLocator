@@ -22,7 +22,7 @@
 
 # Balloons
   Each balloons have different health, and a balloon can have multiple balloons inside that spawns when the parent balloon is popped.
-  eg: Blue balloon pops -> Red balloon spawns.
+  Ex: Blue balloon pops -> Red balloon spawns.
 
   * Red Balloon
 

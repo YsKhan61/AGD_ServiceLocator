@@ -1,6 +1,10 @@
 # Angry Monkey
+  A mini game consisting of different monkeys who hate balloons.
 
-A mini game consisting of different monkeys who hate balloons.
+# Objective: 
+  * Unlock monkeys and place them in the map to shoot the balloons of each wave.
+  * Popping each balloon will give coins and balloons escaped will reduce health.
+
 
 # Monkeys
   Each monkeys have different costs to unlock, costs to use, and have different weapons

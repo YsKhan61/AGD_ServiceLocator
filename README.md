@@ -1,6 +1,12 @@
 # Angry Monkey
   A mini-game consisting of different monkeys who hate balloons.
 
+# Design Patterns used
+  * Flyweight Design Pattern: Properties and Datas related to Monkeys, Balloons, Waves, Maps etc. are assigned in Scriptable Object assets, in order to share them among all similar objects for memory efficiency.
+  * Service Locator: ​Modules like PlayerService, AudioService, WaveService, EventService need to communicate with each other. Hence, there is a GameService, that provides the references of these services who need them. GameService is a MonoBehaviour Singleton. 
+  ​* Model-View-Controller: UI elements are configured with a view script that extends MonoBehaviour, responsible for only the display of data, while separate controller scripts (plain C# scripts) are created to do calculations and processes, and model scripts are created to store data and calculated values.
+  * Observer Pattern: Certain game events such as ballon hit, health decrease, score, etc need to be broadcasted and listened to by UIs and other parts, without direct references between each other.
+
 # Objective: 
   * Unlock monkeys and place them on the map to shoot the balloons of each wave.
   * Popping each balloon will give coins and balloons escaping will reduce health.
